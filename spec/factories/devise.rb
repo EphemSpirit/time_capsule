@@ -6,4 +6,10 @@ FactoryBot.define do
     password { "foobar" }
     password_confirmation { "foobar" }
   end
+
+  factory :entry do
+    title { "test entry" }
+    body { "test post body" }
+    author_id { user.id }
+  end
 end

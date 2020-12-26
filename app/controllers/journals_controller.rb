@@ -1,12 +1,24 @@
 class JournalsController < ApplicationController
   before_action :find_journal, only: [:destroy]
 
+  def index
+    @journals = current_user.entries
+  end
+
   def new
     @journal = Journal.new
   end
 
   def create
     @journal = current_user.entries.build(journal_params)
+
+    if @journal.save
+      redirect_to root_path
+      flash[:notice] = "Journal entry saved!"
+    else
+      render 'new'
+      flash[:notice] = "Something went wrong"
+    end
   end
 
   def destroy
@@ -22,6 +34,6 @@ class JournalsController < ApplicationController
     end
 
     def journal_params
-      params.require(:journal).permit(:title, :description)
+      params.require(:journal).permit(:title, :body)
     end
 end

@@ -1,0 +1,16 @@
+<h2 class="ui centered header">My Journal Entries</h2>
+
+<div class="ui grid">
+  <%= @journals.each do |entry| %>
+    <div class="ui container">
+      <div class="ui four wide column">
+        <div class="ui card">
+          <div class="content">
+            <div class="centered header"><%= truncate(entry.title, length: 240) %></div>
+          </div>
+          <div class="content blurb"><%= entry.body %></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
