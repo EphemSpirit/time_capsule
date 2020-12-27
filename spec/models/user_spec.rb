@@ -30,4 +30,11 @@ RSpec.describe User, type: :model do
     end
   end
 
+  context 'associations' do
+    let(:user) { create(:user) }
+    it 'responds to #entries' do
+      expect(user).to respond_to(:entries)
+    end
+  end
+
 end

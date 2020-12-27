@@ -13,6 +13,10 @@ RSpec.describe Journal, type: :model do
     expect(entry.author).to eq(user)
   end
 
+  it 'responds to #author' do
+    expect(entry).to respond_to(:author)
+  end
+
   it 'has a title' do
     entry.title = nil
     expect(entry).to_not be_valid
