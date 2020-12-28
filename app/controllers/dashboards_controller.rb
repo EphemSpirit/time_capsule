@@ -1,4 +1,8 @@
-class DashboardController < ApplicationController
+class DashboardsController < ApplicationController
+
+  def new
+    @dashboard = current_user.dashboard.build
+  end
 
   def create
     @dashboard = current_user.dashboard.build(dashboard_params)

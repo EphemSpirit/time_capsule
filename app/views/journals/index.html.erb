@@ -6,7 +6,7 @@
       <div class="ui four wide column">
         <div class="ui card">
           <div class="content">
-            <div class="centered header"><%= truncate(entry.title, length: 240) %></div>
+            <div class="centered header"><%= link_to entry.title, journal_path(entry) %></div>
           </div>
           <div class="content blurb"><%= entry.body %></div>
         </div>

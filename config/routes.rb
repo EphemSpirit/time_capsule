@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :journals, only: [:new, :create, :destroy]
-  resource :dashboard, only: [:new, :create, :destroy]
+  resources :journals, only: [:new, :create, :show, :destroy]
+  resource :dashboard, only: [:new, :create, :show, :destroy]
+
   root 'static_pages#home'
   get '/about', to: 'static_pages#about'
   get '/my_journals', to: 'journals#index'

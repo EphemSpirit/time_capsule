@@ -1,5 +1,5 @@
 class JournalsController < ApplicationController
-  before_action :find_journal, only: [:destroy]
+  before_action :find_journal, only: [:show, :destroy]
 
   def index
     @journals = current_user.entries
@@ -21,6 +21,10 @@ class JournalsController < ApplicationController
     end
   end
 
+  def show
+
+  end
+
   def destroy
     @journal.destroy
     flash[:notice] = "Entry successfully deleted"
@@ -30,7 +34,7 @@ class JournalsController < ApplicationController
   private
 
     def find_journal
-      @journal = Journal.find(params[:journal_id])
+      @journal = Journal.find(params[:id])
     end
 
     def journal_params

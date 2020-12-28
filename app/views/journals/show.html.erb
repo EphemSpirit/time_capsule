@@ -1,0 +1,11 @@
+<div class="ui centered card">
+  <div class="content">
+    <div class="header"><%= @journal.title %></div>
+    <div class="meta">Made: <%= distance_of_time_in_words(@journal.created_at) %> ago</div>
+    <div class="description">
+      <p>
+        <%= @journal.body %>
+      </p>
+    </div>
+  </div>
+</div>

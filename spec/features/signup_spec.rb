@@ -11,6 +11,8 @@ RSpec.describe 'signing a user up' do
     fill_in "Email", with: "email@website.com"
     fill_in "user_password", with: "foobar"
     fill_in "user_password_confirmation", with: "foobar"
-    expect { click_button "Sign up" }.to change{ User.count }.by(1)
+    expect { click_button "Sign up" }.to change { User.count }.by(1).and change { Dashboard.count }.by(1)
+    expect(current_path).to eq(dashboard_path)
   end
+
 end
