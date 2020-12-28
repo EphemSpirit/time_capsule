@@ -13,7 +13,7 @@ describe 'logging in', type: :feature do
     fill_in 'Email', with: user.email
     fill_in "Password", with: user.password
     click_button "Log in"
-    
+
     #check that the nav links change
     expect(current_path).to eq(root_path)
     expect(page).to have_text('Signed in successfully.')
