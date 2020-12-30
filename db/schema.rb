@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_174148) do
+ActiveRecord::Schema.define(version: 2020_12_30_164614) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(version: 2020_12_28_174148) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "author_id"
     t.index ["author_id"], name: "index_journals_on_author_id"
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.string "topicable_type"
+    t.integer "topicable_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "content"
   end
 
   create_table "users", force: :cascade do |t|
