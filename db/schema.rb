@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_174148) do
+ActiveRecord::Schema.define(version: 2020_12_31_190436) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -58,6 +58,24 @@ ActiveRecord::Schema.define(version: 2020_12_28_174148) do
     t.index ["author_id"], name: "index_journals_on_author_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.integer "journal_id", null: false
+    t.integer "photo_id", null: false
+    t.integer "to_do_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "tag_id"
+    t.index ["journal_id"], name: "index_topics_on_journal_id"
+    t.index ["photo_id"], name: "index_topics_on_photo_id"
+    t.index ["to_do_id"], name: "index_topics_on_to_do_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -74,4 +92,7 @@ ActiveRecord::Schema.define(version: 2020_12_28_174148) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "dashboards", "users"
+  add_foreign_key "topics", "journals"
+  add_foreign_key "topics", "photos"
+  add_foreign_key "topics", "to_dos"
 end
