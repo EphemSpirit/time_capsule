@@ -13,7 +13,7 @@ class JournalsController < ApplicationController
     @journal = current_user.entries.build(journal_params)
 
     if @journal.save
-      redirect_to root_path
+      redirect_to @journal
       flash[:notice] = "Journal entry saved!"
     else
       render 'new'

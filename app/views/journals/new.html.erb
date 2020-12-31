@@ -10,7 +10,7 @@
       <%= f.rich_text_area :body, required: true %>
     </div>
     <div class="field">
-      <%= f.input :topics %>
+      <%= render 'shared/topics_form', topicable: @journal %>
     </div>
     <div class="form-actions">
       <%= f.button :submit, "Post Entry", class: "positive ui button" %>
