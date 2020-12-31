@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :journals, only: [:new, :create, :show, :destroy]
+  resources :journals, only: [:new, :create, :show] do
+    resources :tags, only: [:new, :create]
+  end
   resource :dashboard, only: [:new, :create, :show, :destroy]
 
   root 'static_pages#home'
