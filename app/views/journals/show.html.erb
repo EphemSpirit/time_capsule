@@ -6,6 +6,9 @@
       <p>
         <%= @journal.body %>
       </p>
+      <p>
+        <small>Tags: <%= raw @journal.tags.map(&:name).join(", ") %></small>
+      </p>
     </div>
   </div>
 </div>

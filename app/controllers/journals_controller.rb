@@ -6,14 +6,14 @@ class JournalsController < ApplicationController
   end
 
   def new
-    @journal = Journal.new
+    @journal = current_user.entries.build
   end
 
   def create
     @journal = current_user.entries.build(journal_params)
 
     if @journal.save
-      redirect_to root_path
+      redirect_to @journal
       flash[:notice] = "Journal entry saved!"
     else
       render 'new'
@@ -38,6 +38,6 @@ class JournalsController < ApplicationController
     end
 
     def journal_params
-      params.require(:journal).permit(:title, :body)
+      params.require(:journal).permit(:title, :body, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
     end
 end
