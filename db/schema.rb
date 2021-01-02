@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_01_155311) do
+ActiveRecord::Schema.define(version: 2021_01_02_180937) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -58,12 +58,22 @@ ActiveRecord::Schema.define(version: 2021_01_01_155311) do
     t.index ["author_id"], name: "index_journals_on_author_id"
   end
 
+  create_table "pictures", force: :cascade do |t|
+    t.string "caption"
+    t.integer "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_pictures_on_user_id"
+  end
+
   create_table "taggings", force: :cascade do |t|
     t.integer "tag_id", null: false
     t.integer "journal_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "picture_id"
     t.index ["journal_id"], name: "index_taggings_on_journal_id"
+    t.index ["picture_id"], name: "index_taggings_on_picture_id"
     t.index ["tag_id"], name: "index_taggings_on_tag_id"
   end
 
@@ -89,6 +99,8 @@ ActiveRecord::Schema.define(version: 2021_01_01_155311) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "dashboards", "users"
+  add_foreign_key "pictures", "users"
   add_foreign_key "taggings", "journals"
+  add_foreign_key "taggings", "pictures"
   add_foreign_key "taggings", "tags"
 end

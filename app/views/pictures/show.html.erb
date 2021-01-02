@@ -1,0 +1,14 @@
+<div class="ui centered card">
+  <div class="content">
+    <div class="header"><%= image_tag @picture.photo %></div>
+    <div class="meta">Made: <%= distance_of_time_in_words(@journal.created_at) %> ago</div>
+    <div class="description">
+      <p>
+        <%= @picture.caption %>
+      </p>
+      <p>
+        <small>Tags: <%= raw @picture.tags.map(&:name).join(", ") %></small>
+      </p>
+    </div>
+  </div>
+</div>
