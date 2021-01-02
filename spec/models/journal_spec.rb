@@ -26,4 +26,10 @@ RSpec.describe Journal, type: :model do
     entry.body = nil
     expect(entry).to_not be_valid
   end
+
+  it 'responds to tag list' do
+    expect(entry).to respond_to(:tag_list)
+    expect(entry.tag_list).to be_a(String)
+  end
+
 end

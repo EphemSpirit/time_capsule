@@ -15,7 +15,7 @@ RSpec.describe 'posting a journal entry' do
     visit new_entry_path
     expect(page).to have_content("Make a New Journal Entry")
     fill_in "Title", with: "test post"
-    fill_in_rich_text_area "journal_body", with: "this is a test post"
+    fill_in "Body", with: "this is a test post"
     expect(current_path).to eq(root_path)
   end
 end
